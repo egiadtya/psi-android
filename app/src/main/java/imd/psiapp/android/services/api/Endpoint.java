@@ -2,8 +2,8 @@ package imd.psiapp.android.services.api;
 
 import imd.psiapp.android.models.PSI;
 import retrofit2.Call;
-import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * api endpoint collection
@@ -13,6 +13,6 @@ import retrofit2.http.GET;
 public interface Endpoint {
 
     @GET("environment/psi")
-    Call<PSI> getPsi(@Field("date_time") String dateTime, @Field("date") String date);
+    Call<PSI> getPsi(@Query("date_time") String dateTime, @Query("date") String date);
 
 }
