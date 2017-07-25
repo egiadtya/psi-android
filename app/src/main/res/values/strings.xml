@@ -4,4 +4,5 @@
     <string name="three_hr_psi">3-Hr PSI</string>
     <string name="one_day_psi">24-Hr PSI</string>
     <string name="pollutan_sub_indice">Pollutan Sub Indice</string>
+    <string name="pollutant_standards_index">Pollutant Standards Index</string>
 </resources>

@@ -3,6 +3,7 @@ package imd.psiapp.android.views.fragments;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
@@ -27,6 +29,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import imd.psiapp.android.R;
 import imd.psiapp.android.models.PSI;
+import imd.psiapp.android.models.PSIReadings;
 import imd.psiapp.android.models.RegionMetadata;
 import imd.psiapp.android.services.api.ApiCallback;
 import imd.psiapp.android.services.api.ApiService;
@@ -38,8 +41,9 @@ import imd.psiapp.android.views.activities.MainActivity;
  */
 
 public class PSIMapFragment extends Fragment implements OnMapReadyCallback,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnMarkerClickListener {
     private GoogleMap googleMap;
+    private PSIReadings psiReadings;
 
     @Nullable
     @Override
@@ -76,10 +80,11 @@ public class PSIMapFragment extends Fragment implements OnMapReadyCallback,
      */
     private void createMarker(String title, LatLng location) {
         if (googleMap != null) {
-            googleMap.addMarker(new MarkerOptions()
+            MarkerOptions marker = new MarkerOptions()
                     .position(location)
                     .icon(BitmapDescriptorFactory.fromBitmap(resizeMapIcons("ic_marker", 150, 150)))
-                    .title(title));
+                    .title(title);
+            googleMap.addMarker(marker);
         }
     }
 
@@ -103,6 +108,7 @@ public class PSIMapFragment extends Fragment implements OnMapReadyCallback,
         ApiService.getInstance().getPsi(new ApiCallback<PSI>() {
             @Override
             public void onSuccess(final PSI data) {
+                psiReadings = data.getPsiItems().get(0).getPsiReadings();
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -125,7 +131,7 @@ public class PSIMapFragment extends Fragment implements OnMapReadyCallback,
      */
     private void setRegionalMetaDataLocation(List<RegionMetadata> metaDataLocation) {
         for (RegionMetadata regionMetadata : metaDataLocation) {
-            createMarker(regionMetadata.getName().toUpperCase(), regionMetadata.getLocation().getLatLng());
+            createMarker(regionMetadata.getName(), regionMetadata.getLocation().getLatLng());
         }
     }
 
@@ -150,6 +156,23 @@ public class PSIMapFragment extends Fragment implements OnMapReadyCallback,
         LatLngBounds singaporeBound = new LatLngBounds(new LatLng(1.1637, 103.5921333), new LatLng(1.46145, 104.0828713));
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(singaporeLatLng, 10.5F));
         googleMap.setLatLngBoundsForCameraTarget(singaporeBound);
+        googleMap.setOnMarkerClickListener(this);
         populateData();
+    }
+
+    @Override
+    public boolean onMarkerClick(final Marker marker) {
+        new Handler(getActivity().getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                PSIMapInfoFragment psiMapInfoFragment = new PSIMapInfoFragment();
+                Bundle arguments = new Bundle();
+                arguments.putString(PSIMapInfoFragment.REGION_NAME, marker.getTitle());
+                arguments.putParcelable(PSIMapInfoFragment.PSI_READINGS, psiReadings);
+                psiMapInfoFragment.setArguments(arguments);
+                psiMapInfoFragment.show(getFragmentManager(), null);
+            }
+        }, 300);
+        return false;
     }
 }
