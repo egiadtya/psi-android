@@ -32,8 +32,8 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/tab_height"
-                app:tabIndicatorColor="@android:color/transparent"
-                app:tabSelectedTextColor="@color/white"
+                app:tabIndicatorColor="@color/colorAccent"
+                app:tabSelectedTextColor="@color/colorPrimary"
                 app:tabTextAppearance="@style/TabStyle"
                 app:tabTextColor="@color/tab_text_color" />
         </android.support.v7.widget.CardView>

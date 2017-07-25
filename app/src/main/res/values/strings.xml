@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PSIApp</string>
+    <string name="map">Map</string>
+    <string name="three_hr_psi">3-Hr PSI</string>
+    <string name="one_day_psi">24-Hr PSI</string>
+    <string name="pollutan_sub_indice">Pollutan Sub Indice</string>
 </resources>
