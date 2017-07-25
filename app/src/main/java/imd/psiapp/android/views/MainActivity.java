@@ -1,7 +1,9 @@
-package imd.psiapp.android;
+package imd.psiapp.android.views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import imd.psiapp.android.R;
 
 public class MainActivity extends AppCompatActivity {
 
