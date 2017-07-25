@@ -3,6 +3,7 @@ package imd.psiapp.android.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -67,6 +68,7 @@ public class RegionMetadata implements Parcelable {
     public static class Location implements Parcelable {
         private double latitude;
         private double longitude;
+        private LatLng latLng;
 
         public Location() {
         }
@@ -102,6 +104,13 @@ public class RegionMetadata implements Parcelable {
 
         public void setLongitude(double longitude) {
             this.longitude = longitude;
+        }
+
+        public LatLng getLatLng() {
+            if (latLng == null) {
+                latLng = new LatLng(latitude, longitude);
+            }
+            return latLng;
         }
 
         @Override

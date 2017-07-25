@@ -5,6 +5,10 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.HashMap;
+
 /**
  * data model for Pollutant Standards Index readings
  * Created by egiadtya on 7/24/17.
@@ -160,6 +164,38 @@ public class PSIReadings implements Parcelable {
 
     public void setO3EightHourMax(PSIReadingsItem o3EightHourMax) {
         this.o3EightHourMax = o3EightHourMax;
+    }
+
+    /**
+     * for getting psi readings base on region
+     *
+     * @param region {@link String} region of region, the value should be like <p>
+     *               {@value PSIReadingsItem#EAST},
+     *               {@value PSIReadingsItem#NATIONAL},
+     *               {@value PSIReadingsItem#CENTRAL},
+     *               {@value PSIReadingsItem#WEST},
+     *               {@value PSIReadingsItem#NORTH},
+     *               {@value PSIReadingsItem#SOUTH}
+     *               </p>
+     * @return HashMap of psi data
+     */
+    public HashMap<String, Double> getPSIBaseOnRegion(String region) {
+        HashMap<String, Double> psiRegion = new HashMap<>();
+        Field[] fields = getClass().getDeclaredFields();
+        for (Field field : fields) {
+            if (Modifier.isPrivate(field.getModifiers())) {
+                field.setAccessible(true);
+                if (field.getType().isAssignableFrom(PSIReadingsItem.class)) {
+                    try {
+                        PSIReadingItemRegion readingItemRegion = (PSIReadingItemRegion) field.get(this);
+                        psiRegion.put(field.getName(), readingItemRegion.getData(region));
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        return psiRegion;
     }
 
     @Override

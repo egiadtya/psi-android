@@ -11,18 +11,24 @@ import com.google.gson.annotations.SerializedName;
  * Created by egiadtya on 7/24/17.
  */
 
-public class PSIReadingsItem implements Parcelable {
-    @SerializedName("west")
+public class PSIReadingsItem implements Parcelable, PSIReadingItemRegion {
+    public static final String WEST = "west";
+    public static final String NATIONAL = "national";
+    public static final String EAST = "east";
+    public static final String CENTRAL = "central";
+    public static final String SOUTH = "south";
+    public static final String NORTH = "north";
+    @SerializedName(WEST)
     private double west;
-    @SerializedName("national")
+    @SerializedName(NATIONAL)
     private double national;
-    @SerializedName("east")
+    @SerializedName(EAST)
     private double east;
-    @SerializedName("central")
+    @SerializedName(CENTRAL)
     private double central;
-    @SerializedName("south")
+    @SerializedName(SOUTH)
     private double south;
-    @SerializedName("north")
+    @SerializedName(NORTH)
     private double north;
 
     public PSIReadingsItem() {
@@ -95,6 +101,26 @@ public class PSIReadingsItem implements Parcelable {
 
     public void setNorth(double north) {
         this.north = north;
+    }
+
+    @Override
+    public double getData(String region) {
+        switch (region) {
+            case WEST:
+                return west;
+            case NATIONAL:
+                return national;
+            case CENTRAL:
+                return central;
+            case EAST:
+                return east;
+            case SOUTH:
+                return south;
+            case NORTH:
+                return north;
+            default:
+                return 0.0;
+        }
     }
 
     @Override

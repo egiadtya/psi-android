@@ -10,13 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Splash">
-        <activity android:name=".views.activities.MainActivity">
+        <activity
+            android:name=".views.activities.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- key for google map -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBoUj6drvgDvpG9bdqpdvM6qoCSETFf9vY" />
     </application>
 
 </manifest>
