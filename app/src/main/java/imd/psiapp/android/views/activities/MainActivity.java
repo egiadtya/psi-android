@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import imd.psiapp.android.R;
 import imd.psiapp.android.views.fragments.PSIMapFragment;
+import imd.psiapp.android.views.fragments.TwentyHourPSIFragment;
 
 /**
  * this class for showing main page
@@ -53,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private void initTabMenu() {
         tabMenu.addTab(tabMenu.newTab().setText(R.string.map), true);
-        tabMenu.addTab(tabMenu.newTab().setText(R.string.three_hr_psi));
         tabMenu.addTab(tabMenu.newTab().setText(R.string.one_day_psi));
         tabMenu.addTab(tabMenu.newTab().setText(R.string.pollutan_sub_indice));
         tabMenu.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -62,8 +62,9 @@ public class MainActivity extends AppCompatActivity {
                 if (tab.getPosition() == 0) {
                     changeFragment(new PSIMapFragment());
                 } else if (tab.getPosition() == 1) {
+                    changeFragment(new TwentyHourPSIFragment());
                 } else if (tab.getPosition() == 2) {
-                } else if (tab.getPosition() == 3) {
+
                 }
             }
 
