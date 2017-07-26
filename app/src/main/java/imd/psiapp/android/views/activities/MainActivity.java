@@ -12,6 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import imd.psiapp.android.R;
 import imd.psiapp.android.views.fragments.PSIMapFragment;
+import imd.psiapp.android.views.fragments.PollutantSubIndicesFragment;
 import imd.psiapp.android.views.fragments.TwentyHourPSIFragment;
 
 /**
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (tab.getPosition() == 1) {
                     changeFragment(new TwentyHourPSIFragment());
                 } else if (tab.getPosition() == 2) {
-
+                    changeFragment(new PollutantSubIndicesFragment());
                 }
             }
 

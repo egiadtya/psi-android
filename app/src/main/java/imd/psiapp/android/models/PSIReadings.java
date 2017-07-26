@@ -7,7 +7,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * data model for Pollutant Standards Index readings
@@ -196,6 +198,19 @@ public class PSIReadings implements Parcelable {
             }
         }
         return psiRegion;
+    }
+
+    /**
+     * @return pollutant sub indices collection
+     */
+    public List<PSIReadingItemRegion> getPollutantSubIndice() {
+        List<PSIReadingItemRegion> readingsList = new ArrayList<>();
+        readingsList.add(coSubIndex);
+        readingsList.add(o3SubIndex);
+        readingsList.add(so2SubIndex);
+        readingsList.add(pm10SubIndex);
+        readingsList.add(pm25SubIndex);
+        return readingsList;
     }
 
 
