@@ -33,6 +33,7 @@ First, you need android studio to open this project. check this link if you does
 
 
 ### Screenshot
-![PSI on Maps](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193601.png)
-![24Hour PSI Chart](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193635.png)
-![Pollutant sub indices Chart](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193658.png)
+![PSI on Maps](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193601.jpg)
+![PSI Information Maps Clicked](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-204728.jpg)
+![24Hour PSI Chart](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193635.jpg)
+![Pollutant sub indices Chart](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193658.jpg)
