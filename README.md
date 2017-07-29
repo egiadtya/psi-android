@@ -2,12 +2,15 @@
 
 ### Introduction
 This is android application for showing Singapore Pollutant Standards Index
+(https://data.gov.sg/dataset/psi)
 
 feature list on this application are:
 
  * Showing PSI Based on region (east,west,north,central,south) on google Maps
  * Chart of 24 hours PSI
  * Chart of Pollutant sub indices
+ 
+ see javadoc (https://egiadtya.github.io/psi-android-javadoc/)
 
 ### Installation
 
@@ -30,6 +33,6 @@ First, you need android studio to open this project. check this link if you does
 
 
 ### Screenshot
-![PSI on Maps](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193601.png)
-![24Hour PSI Chart](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193635.png)
-![Pollutant sub indices Chart](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193658.png)
+![PSI on Maps](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193601.png){ width=50% }
+![24Hour PSI Chart](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193635.png){ width=50% }
+![Pollutant sub indices Chart](https://github.com/egiadtya/psi-android/blob/master/screenshot/device-2017-07-29-193658.png){ width=50% }
