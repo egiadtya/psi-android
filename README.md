@@ -10,7 +10,7 @@ feature list on this application are:
  * Chart of 24 hours PSI
  * Chart of Pollutant sub indices
  
- see javadoc (https://egiadtya.github.io/psi-android-javadoc/)
+ see javadoc (https://egiadtya.github.io/psi-android/javadoc/)
 
 ### Installation
 
